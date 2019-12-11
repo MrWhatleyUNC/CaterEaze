@@ -7,8 +7,11 @@ class OrdersList extends Component {
     componentDidMount(){
         console.log(this.props);
         this.props.fetchOrders();
+        //let shoppingList= this.props.shoppingList.shoppingList
+        //this.props.fetchOrderRecipes();
         console.log(this.props);
     }
+
 
     findOrderRecipes(mealTypeId, guestCount){
         console.log('id',mealTypeId);
@@ -16,10 +19,7 @@ class OrdersList extends Component {
         let order = {}
         order.orderId= mealTypeId
         order.GuestCount= guestCount
-        let recipeIngredientId;
-        this.props.fetchOrderRecipes(order).then(response =>{
-            this.props.fetchRecipeIngredientNames(response.payload.data.Recipes)
-        });
+        this.props.fetchOrderRecipes(order);
         
         console.log(this.props);
         //this.props.fetchRecipeIngredientNames(recipeIngredientId);
@@ -29,13 +29,16 @@ class OrdersList extends Component {
     renderShoppinglist(){
         console.log(this.props.shoppingList);
         let shoppingList= this.props.shoppingList
-        // return shoppingList.map(s=>(
-        //     <div>
-        //         <ul>
-
-        //         </ul>
-        //     </div>
-        // ))
+        console.log('shopping list:',shoppingList);
+        if(shoppingList != undefined) {
+            return shoppingList.map(item=>(
+            <div>
+                <ul>
+                {item.ingredient}
+                </ul>
+            </div>
+        ))
+        }
     }
 
     renderOrders() {

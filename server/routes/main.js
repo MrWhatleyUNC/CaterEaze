@@ -21,16 +21,17 @@ router.post('/ingredients/order', (req, res, next)=>{
         Menus
         .findById(req.body.orderId)
         .populate(
-            {path: 'Recipes',
-        populate: {path:'ingredient', model: 'Recipes'}})
-        .exec((err, ingredients) =>{
-            if (err) return next(err)
-            else
-            console.log(ingredients);
-            res.send(ingredients);
+            {path: 'Recipes'})
+        .exec((err, menu) =>{
+            res.send(createShoppingList(guestCount, menu));
         })
     }
 });
+
+function createShoppingList( guestCount, menu){
+    console.log(menu.Recipes[0].recipe)
+    return {shoppingList: menu.Recipes[0].recipe}
+}
 
 // router.post('/ingredient', (req, res, next)=>{
 //     if ()
