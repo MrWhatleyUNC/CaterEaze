@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Route, Switch } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
+
 import OrderForm from './components/order';
 import OrdersList from './components/orders-list';
 class App extends Component {
@@ -16,10 +17,10 @@ class App extends Component {
                 </div>
                 <div className= 'row'>
                     <div className= 'col-lg-3 col-md-3 offset-3'>
-                        <Button>Place Order</Button>
+                        <Button href='/'>Place Order</Button>
                     </div>
                     <div className= 'col-lg-3 '>
-                        <Button>View Orders</Button>
+                        <Button href='/caterer'>View Orders</Button>
                     </div>
                 </div>
                 <div className= 'container'></div>

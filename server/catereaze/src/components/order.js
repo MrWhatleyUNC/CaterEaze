@@ -50,7 +50,7 @@ class OrderForm extends Component {
         return (
             <div>
                 <DatePicker
-                //selected= {this.state.orderDate}
+                selected= {this.props.orderDate}
                 onChange= {e=> this.handleDate(e)} 
                 showTimeSelect
                 dateFormat="Pp"

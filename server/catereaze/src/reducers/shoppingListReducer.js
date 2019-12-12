@@ -1,4 +1,4 @@
-import { FETCH_ORDER_RECIPES, FETCH_RECIPE_INGREDIENT_NAMES } from '../actions/actions'
+import { FETCH_ORDER_RECIPES } from '../actions/actions'
 
 export default function(state = [], action) {
     switch (action.type) {

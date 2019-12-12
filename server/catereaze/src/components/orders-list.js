@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { fetchOrders, fetchOrderRecipes, fetchRecipeIngredientNames } from '../actions/actions';
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
+import Table from 'react-bootstrap/Table'
 
 class OrdersList extends Component {
     componentDidMount(){
@@ -32,11 +33,11 @@ class OrdersList extends Component {
         console.log('shopping list:',shoppingList);
         if(shoppingList != undefined) {
             return shoppingList.map(item=>(
-            <div>
-                <ul>
-                {item.ingredient}
-                </ul>
-            </div>
+            <tr>
+                <td>{item.ingredient}</td>
+                <td>{item.quantity}</td>
+                <td>{item.unit}</td>
+           </tr>
         ))
         }
     }
@@ -74,7 +75,18 @@ class OrdersList extends Component {
                 </div>
                 <div className= 'col'>
                         <h2>Shopping List</h2>
-                        {this.renderShoppinglist()}
+                        <Table striped bordered hover>
+                            <thead>
+                                <tr>
+                                <th>Ingredient</th>
+                                <th>Quantity</th>
+                                <th>Units</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {this.renderShoppinglist()}
+                            </tbody>
+                        </Table>
                 </div>
             </div>
         )

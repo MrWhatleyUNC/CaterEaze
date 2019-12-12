@@ -28,9 +28,47 @@ router.post('/ingredients/order', (req, res, next)=>{
     }
 });
 
-function createShoppingList( guestCount, menu){
-    console.log(menu.Recipes[0].recipe)
-    return {shoppingList: menu.Recipes[0].recipe}
+function createShoppingList( guestCount, menu) {
+    //console.log(menu.Recipes[0].recipe)
+    let shoppingList= [];
+    for (l= 0; l< menu.Recipes.length; l++) {
+        console.log(menu.Recipes);
+        menu.Recipes[l].recipe.map(i=>(
+        shoppingList.push({ingredient: i.ingredient, 
+                    quantity: (i.quantity*(guestCount/10)),
+                    unit: i.unit}
+        )))
+    }
+    console.log(shoppingList)
+    
+    for (l=0; l< shoppingList.length; l++) {
+        if (shoppingList[l].unit == 'oz') {
+            console.log(shoppingList[l].ingredient,'unit needs conversion from', shoppingList[l].unit,'to lbs');
+            console.log('quantity in oz', shoppingList[l].quantity);
+            shoppingList[l].quantity = shoppingList[l].quantity/16;
+            console.log('quantity in lbs', shoppingList[l].quantity);
+            shoppingList[l].unit = 'lbs';
+        }
+    }
+
+    for (l=0; l< shoppingList.length; l++) {
+        if (shoppingList[l].unit != 'oz') {
+            console.log(shoppingList[l].ingredient,'unit needs conversion from', shoppingList[l].unit);
+            if(shoppingList[l].unit == 'tbsp'){
+                console.log('quantity in tbsp',shoppingList[l].quantity);
+                shoppingList[l].quantity = shoppingList[l].quantity/2;
+                console.log('quantity in oz',shoppingList[l].quantity);
+                shoppingList[l].unit = 'oz';
+            }else if (shoppingList[l].unit == 'tsp'){
+                console.log('quantity in tsp',shoppingList[l].quantity);
+                shoppingList[l].quantity = shoppingList[l].quantity/6;
+                console.log('quantity in oz',shoppingList[l].quantity);
+            }
+        }
+        else console.log('all units in oz or lbs');
+    }
+    console.log('shopping list w/ converted units:', shoppingList);
+    return {shoppingList: shoppingList};
 }
 
 // router.post('/ingredient', (req, res, next)=>{
