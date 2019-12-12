@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import { Route, Switch } from "react-router-dom";
+import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
 import Image from 'react-bootstrap/Image';
 import OrderForm from './components/order';
 import OrdersList from './components/orders-list';
 import Navbar from 'react-bootstrap/Navbar';
-import './App.css';
+
 
 class App extends Component {
     render() {
@@ -14,14 +15,11 @@ class App extends Component {
             <div className= 'container-fluid justify-content-center'>
                 <Navbar bg='primary' variant='dark'>
                     <Navbar.Brand>CaterEaze</Navbar.Brand>
-                <Button href='/'variant="outline-light">Place an Order</Button>     <Button href='/caterer'variant="outline-light">View Current Orders</Button>
+                <Button href ='/'variant="outline-light" className='myButton'>Place an Order</Button><Button href='/caterer'variant="outline-light"className='myButton'>View Current Orders</Button>
                 </Navbar>
                 <div className= 'hero row'>
                     <div className= 'col-md-6 offset-3 d-flex justify-content-center'>
-                        {/* <Image src='https://www.osf.com/wp-content/uploads/2018/10/OSF-Catering-chafers-scooping-linguini-768x512.jpg'
-                             rounded 
-                             width= '100%'
-                             height= '80%'/> */}
+                        <h1 className= 'header'>CaterEaze</h1>
                     </div>
                 </div>
                 <div className= 'row'>

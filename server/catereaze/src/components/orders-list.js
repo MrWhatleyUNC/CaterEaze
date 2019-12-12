@@ -82,7 +82,7 @@ class OrdersList extends Component {
                 </div>
                 <div className= 'col'>
                         <h2>Shopping List</h2>
-                        <Table striped bordered hover>
+                        <Table striped bordered hover variant= 'dark'>
                             <thead>
                                 <tr>
                                 <th>Ingredient</th>

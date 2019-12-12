@@ -1,8 +1,8 @@
 const express = require('express')
 const mongoose = require('mongoose')
-const bodyParser = require('body-parser')
-const cors = require('cors')
-
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const keys= require('./config/keys');
 const http = require("http");
 
 mongoose.connect('mongodb://localhost/CaterEaze', {useNewUrlParser: true}, () =>{
@@ -21,7 +21,7 @@ const mainRoutes = require('./routes/main')
 
 app.use(mainRoutes)
 
-const port = 5000;
+const port = process.env.PORT ||5000;
 const server = http.createServer(app);
 server.listen(port);
 console.log("Server listening on:", port);
