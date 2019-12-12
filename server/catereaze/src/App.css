@@ -1,0 +1,12 @@
+body {
+    /* background-image: url("https://www.osf.com/wp-content/uploads/2018/10/OSF-Catering-chafers-scooping-linguini-768x512.jpg"); */
+    background-color: #039dfc;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: 100%;
+   }
+.hero {
+    background: url('https://www.osf.com/wp-content/uploads/2018/10/OSF-Catering-chafers-scooping-linguini-768x512.jpg') no-repeat center fixed;
+    background-size: 100%;
+    height: 300px;
+  }

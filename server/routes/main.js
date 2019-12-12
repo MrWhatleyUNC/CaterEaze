@@ -29,7 +29,6 @@ router.post('/ingredients/order', (req, res, next)=>{
 });
 
 function createShoppingList( guestCount, menu) {
-    //console.log(menu.Recipes[0].recipe)
     let shoppingList= [];
     for (l= 0; l< menu.Recipes.length; l++) {
         console.log(menu.Recipes);

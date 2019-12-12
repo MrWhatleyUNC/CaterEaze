@@ -2,7 +2,10 @@ import React, { Component } from "react";
 import { fetchOrders, fetchOrderRecipes, fetchRecipeIngredientNames } from '../actions/actions';
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import Table from 'react-bootstrap/Table'
+import Table from 'react-bootstrap/Table';
+import ListGroup from 'react-bootstrap/ListGroup';
+
+var moment = require('moment');
 
 class OrdersList extends Component {
     componentDidMount(){
@@ -47,19 +50,21 @@ class OrdersList extends Component {
         let orders = this.props.orders.orders
         return orders.map(o=>(
             <div>
-                <a
-                href='#'
-                onClick={e => {
-                    e.preventDefault(this.findOrderRecipes(o.mealType._id, o.GuestCount));
-                  }}>
-                    {o.mealType.mealType}
-                </a>
-                <div>
-                 Event Date: {o.EventDate}
-                </div>
-                <div>
-                Guest Count: {o.GuestCount}
-                </div><br />
+                <ListGroup.Item>
+                    <a
+                    href='#'
+                    onClick={e => {
+                        e.preventDefault(this.findOrderRecipes(o.mealType._id, o.GuestCount));
+                    }}>
+                        {o.mealType.mealType}
+                    </a>
+                    <div>
+                        Event Date: {moment(o.EventDate).format('MMMM Do YYYY, h:mm:ss a')}
+                    </div>
+                    <div>
+                        Guest Count: {o.GuestCount}
+                    </div>
+                </ListGroup.Item>
             </div>
         ))
     }
@@ -70,7 +75,9 @@ class OrdersList extends Component {
                 <div className= 'col'>
                     <div>
                         <h2>Orders Here</h2>
-                        {this.renderOrders()}
+                        <ListGroup>
+                            {this.renderOrders()}
+                        </ListGroup>
                     </div>
                 </div>
                 <div className= 'col'>
